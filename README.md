@@ -19,6 +19,7 @@ Why would this be useful? [Check out the announcement blog post](https://shift.i
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [QUICK: startup by docker](#quick-startup-by-docker)
 - [QUICK: How to use the module](#quick-how-to-use-the-module)
 - [Library API](#library-api)
     - [`load` the model](#load-the-model)
@@ -49,6 +50,19 @@ The library categorizes image probabilities in the following 5 classes:
 - `Sexy` - sexually explicit images, not pornography
 
 > _The demo is a continuous deployment source - Give it a go: http://nsfwjs.com/_
+
+## QUICK: startup by docker
+
+```bash
+git clone `this project` 
+docker build -t nsfwjs .
+docker run -d --name nsfwjs -p 8010:8010 nsfwjs
+
+curl -X GET "http://localhost:8010/nsfw?url=https://www.coloradohardwoodfloor.com/wp-content/uploads/2017/03/happy-people-1050x600.jpg"
+[{"className":"Neutral","probability":0.9961453676223755},{"className":"Porn","probability":0.0018340437673032284},{"className":"Sexy","probability":0.0011130330385640264},{"className":"Drawing","probability":0.0008320482447743416},{"className":"Hentai","probability":0.00007549102883785963}]
+
+
+```
 
 ## QUICK: How to use the module
 
